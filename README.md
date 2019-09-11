@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/filschristian/conduit.svg?branch=develop)](https://travis-ci.org/filschristian/conduit)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0d00b8b7449746549fab/maintainability)](https://codeclimate.com/github/filschristian/conduit/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0d00b8b7449746549fab/test_coverage)](https://codeclimate.com/github/filschristian/conduit/test_coverage)
 
