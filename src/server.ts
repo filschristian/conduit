@@ -4,7 +4,7 @@ import { applyMiddleware, applyRoutes } from "./utils";
 import middleware from "./middleware";
 import routes from './services';
 import errorHandlers from "./middleware/errorHandlers";
-import { port } from "./config";
+import { port, environment } from "./config";
 
 process.on("uncaughtException", e => {
   console.log(e);
@@ -29,6 +29,10 @@ applyMiddleware(errorHandlers, router);
 
 const server = http.createServer(router);
 
-server.listen(port, () =>
-  console.log(`Server is running on PORT:${port}...`)
-);
+if (environment !== 'test') {
+    server.listen(port, () =>
+    console.log(`Server is running on PORT:${port}...`)
+  );
+}
+
+export default server;
