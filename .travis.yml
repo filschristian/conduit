@@ -18,3 +18,7 @@ before_script:
   - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
 script:
   - npm run test
+addons:
+  code_climate:
+    repo_token:
+      secure: "nS2nXajONhq8lG1IS4jRFpnBo3Tm2uhADwS78DIx2JGWCLg3RiwgpvOW1fPM8UKy9JbQFSemQaxP7v2s6R59p67N39wq8UKOXL+7mY1dW9HsnvTPhm0sXDZx4Uisynmme4fcWBvOe7qpGPYzZtFEu3ensh8m9ipZtMl7I5vjuJqpd+kMoHirYTWkTM7Cd4oRkxG+Z51sMgQ4AlP37FqYNGVndNkPK9gR/ZxPT8YjYpHJxgupNHBY2yYaCqq6jLqcPYH8cZYRsf+4KYcAh3gEPIP5NrpENfpgHRV+L7+gh63Sarkbj6nE+BwJ2WPOXyslrtF7x0GRfZCUz1/yzqyQ0fxA+pJWC6L25azGlajNYLaolGsT4d5pfX2TLO8iKwphrmgHgDiM8GGsbuuCcrdAMdcI8SJJq6VxJUTEhuByUFZOFrfq6R6CjxI7wcX1y16l2YBSlaqHyAO90r0LOL3/aky/cBd9Cp0ofRWH9qFtp0dRgFPFqlMF3zvdmIqhicJWvxDEYxfb5hL+PRzKQWGLWOTM+J2pCH1tRmGxYv9dxPSFqlAHbtwL0SQqBnh/KJWgXxFA+bHEZzxn5acxxiZzB70Oxj7X+IEs3ZXasoCdijoGGMdR2wNmDPtFFS0DvztpeDpcIImh/FTFbm1nFzykd22F6BC8qLiCJpfbCiiXj0U="

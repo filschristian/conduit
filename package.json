@@ -4,7 +4,7 @@
   "description": "conduit api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage --verbose --passWithNoTests",
     "dev": "tsc-watch --onSuccess \"node -r dotenv/config ./dist/server.js\""
   },
   "repository": {
@@ -34,6 +34,24 @@
     "typescript": "^3.6.2"
   },
   "devDependencies": {
-    "dotenv": "^8.1.0"
+    "@types/jest": "^24.0.18",
+    "dotenv": "^8.1.0",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.0.2"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
