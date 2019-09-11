@@ -4,7 +4,7 @@
   "description": "conduit api",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --verbose --passWithNoTests",
+    "test": "NODE_ENV=test jest --coverage --verbose --detectOpenHandles",
     "dev": "tsc-watch --onSuccess \"node -r dotenv/config ./dist/server.js\"",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
@@ -35,9 +35,11 @@
     "typescript": "^3.6.2"
   },
   "devDependencies": {
-    "dotenv": "^8.1.0",
     "@types/jest": "^24.0.18",
+    "@types/supertest": "^2.0.8",
+    "dotenv": "^8.1.0",
     "jest": "^24.9.0",
+    "supertest": "^4.0.2",
     "ts-jest": "^24.0.2"
   },
   "jest": {
@@ -57,7 +59,8 @@
     "coveragePathIgnorePatterns": [
       "coverage",
       "node_modules",
-      "src/server.ts"
+      "src/server.ts",
+      "dist"
     ]
   }
 }
