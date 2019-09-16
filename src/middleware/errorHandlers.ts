@@ -8,14 +8,18 @@ const handle404Error = (router: Router) => {
 };
 
 const handleClientError = (router: Router) => {
-  router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    ErrorHandler.clientError(err, res, next);
-  });
+  handleError(router, 'client');
 };
 
 const handleServerError = (router: Router) => {
+  handleError(router, 'server');
+};
+
+const handleError = (router: Router, type: string) => {
   router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    ErrorHandler.serverError(err, res, next);
+    type === 'client'
+    ? ErrorHandler.clientError(err, res, next)
+    : ErrorHandler.serverError(err, res, next)
   });
 };
 
