@@ -7,7 +7,7 @@ export const notFoundError = () => {
 
 export const clientError = (err: Error, res: Response, next: NextFunction) => {
   if (err instanceof HTTPClientError) {
-    console.warn(err);
+    if (process.env.NODE_ENV === 'development') console.warn(err);
     res.status(err.statusCode).send(err.message);
   } else {
     next(err);
