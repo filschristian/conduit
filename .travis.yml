@@ -3,6 +3,7 @@ services: mongodb
 env:
   global:
     - NODE_ENV=test
+    - CC_TEST_REPORTER_ID=8c56a3384b1287d6f674a83cea7934723521e7c806c8d7c5493a2fa0562dd59b
 language: node_js
 node_js:
   - '10.15.1'
@@ -21,7 +22,7 @@ before_script:
   - ./cc-test-reporter before-build
 script:
   - npm run test
-after_success:
+after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 addons:
   code_climate:
