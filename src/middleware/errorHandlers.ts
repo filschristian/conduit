@@ -1,26 +1,24 @@
-import { Request, Response, NextFunction, Router } from "express";
-import * as ErrorHandler from "../utils/errorHandler";
+import { Request, Response, NextFunction, Router } from 'express';
+import * as ErrorHandler from '../utils/errorHandler';
 
-const handle404Error = (router: Router) => {
-  router.use((req: Request, res: Response) => {
-    ErrorHandler.notFoundError();
-  });
+const handle404Error = (router: Router): void => {
+    router.use(() => {
+        ErrorHandler.notFoundError();
+    });
 };
 
-const handleClientError = (router: Router) => {
-  handleError(router, 'client');
+const handleError = (router: Router, type: string): void => {
+    router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+        type === 'client' ? ErrorHandler.clientError(err, res, next) : ErrorHandler.serverError(err, res);
+    });
 };
 
-const handleServerError = (router: Router) => {
-  handleError(router, 'server');
+const handleClientError = (router: Router): void => {
+    handleError(router, 'client');
 };
 
-const handleError = (router: Router, type: string) => {
-  router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    type === 'client'
-    ? ErrorHandler.clientError(err, res, next)
-    : ErrorHandler.serverError(err, res, next)
-  });
+const handleServerError = (router: Router): void => {
+    handleError(router, 'server');
 };
 
 export default [handle404Error, handleClientError, handleServerError];
